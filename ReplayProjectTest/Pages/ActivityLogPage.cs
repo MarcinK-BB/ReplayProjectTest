@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Internal;
-using Xunit;
+﻿using Xunit;
 
 namespace ReplayProjectTest.Pages
 {
+    public interface IActivityLogPage
+    {
+        void SelectElementOnTheList(int rowNumbers);
+        void RemoveSelectedElementFromTheListAndAssert(int removedElements);
+    }
     public class ActivityLogPage: IActivityLogPage
     {
         private IWebDriver driver;
@@ -37,9 +36,10 @@ namespace ReplayProjectTest.Pages
 
             _waits.WaitForLoaderDisappear();
             _waits.WaitForElement(table);
-            var rowsToDelete = TableExtension.CreateTableRowWithWebElements(table, 3);
+            var rowsToDelete = TableExtension.
+                                            CreateTableRowWithWebElements(table, 3, new string[]{"input","a","button"} );
 
-            //PerformSelectOperation on first Column
+            //PerformSelectOperation on first Column of the table
             foreach (var row in rowsToDelete)
             {
                 row.tdDataColection[0].Element.Click();
@@ -51,15 +51,14 @@ namespace ReplayProjectTest.Pages
         {
             _waits.WaitForElement(cournetCountofElement);
             var initialCountofElements = Convert.ToInt32(cournetCountofElement.Text.Replace(",",""));
+            
             performAction("Delete");
-
-            driver.SwitchTo().Alert().Accept();
 
             _waits.WaitForLoaderDisappear();
             var actualCountofElements = Convert.ToInt32(cournetCountofElement.Text.Replace(",", ""));
 
             //numbers of actual elements on the list shuld be less then removed rows
-             Assert.Equal(actualCountofElements- removedElements, initialCountofElements);
+             Assert.Equal(actualCountofElements, initialCountofElements - removedElements);
 
         }
 
@@ -67,15 +66,11 @@ namespace ReplayProjectTest.Pages
         {
             _waits.WaitForElementClick(btnAction);
             _waits.WaitForElementClick(btnActionToPerform(ActionName));
+            var alert = driver.SwitchTo().Alert();
+            alert.Accept();
         }
 
 
 
-    }
-
-    public interface IActivityLogPage
-    {
-        void SelectElementOnTheList(int rowNumbers);
-        void RemoveSelectedElementFromTheListAndAssert(int removedElements);
     }
 }

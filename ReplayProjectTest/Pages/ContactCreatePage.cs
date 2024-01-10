@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium.Interactions;
 using ReplayProjectTest.Models;
 
 namespace ReplayProjectTest.Pages
 {
+    public interface IContactCreatePage
+    {
+        void FillContact(Contact contact);
+
+    }
     public class ContactCreatePage: IContactCreatePage
     {
         IWebDriver driver;
@@ -15,11 +15,10 @@ namespace ReplayProjectTest.Pages
         private readonly IWaits _waits;
         private readonly IContactEditPage _contactEditPage;
 
-        public ContactCreatePage(IDriverFactory driverFactory, IWaits waits, IContactEditPage contactEditPage)
+        public ContactCreatePage(IDriverFactory driverFactory, IWaits waits)
         {
             _driverFactory = driverFactory;
             _waits = waits;
-            _contactEditPage = contactEditPage;
             driver = _driverFactory.Driver;
         }
 
@@ -49,7 +48,7 @@ namespace ReplayProjectTest.Pages
             var categoriesList = categories.Split(',');
             foreach (var category in categoriesList)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(1000); // I have problem with that therefore I used wait:)
                 _waits.WaitForElementClick(Categories);
                 _waits.WaitForElement(btnCategoriesSearch);
                 btnCategoriesSearch.SendKeys(category);
@@ -62,12 +61,6 @@ namespace ReplayProjectTest.Pages
             _waits.WaitForElementClick(Role);
             RoleItemToSelect(roles).Click();
         }
-
-    }
-
-    public interface IContactCreatePage
-    {
-        void FillContact(Contact contact);
 
     }
 }

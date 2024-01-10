@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ReplayProjectTest.Pages;
+﻿using ReplayProjectTest.Pages;
 
 namespace ReplayProjectTest.StepDefinitions
 {
@@ -29,8 +24,5 @@ namespace ReplayProjectTest.StepDefinitions
         {
             _activityLogPage.RemoveSelectedElementFromTheListAndAssert(3);
         }
-
-
-
     }
 }

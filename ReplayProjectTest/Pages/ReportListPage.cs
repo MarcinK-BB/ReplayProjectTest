@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ReplayProjectTest.Pages
+﻿namespace ReplayProjectTest.Pages
 {
+    public interface IReportListPage
+    {
+        void searchAndClicEnter(string Name);
+    }
     public class ReportListPage: IReportListPage
     {
         IWebDriver driver;
@@ -28,15 +26,11 @@ namespace ReplayProjectTest.Pages
         {
 
             _waits.WaitForElement(inpSearch);
-            Thread.Sleep(1000);
+            Thread.Sleep(1000); // I have problem with that therefore I used wait:)
             inpSearch.SendKeys(Name);
             inpSearch.SendKeys(Keys.Enter);
             _waits.WaitForElementClick(lmkName(Name));
+            _waits.WaitForLoaderDisappear();
         }
-    }
-
-    public interface IReportListPage
-    {
-        void searchAndClicEnter(string Name);
     }
 }

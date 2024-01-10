@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ReplayProjectTest.Pages
+﻿namespace ReplayProjectTest.Pages
 {
     public interface ILoginPage
     {
@@ -25,8 +19,6 @@ namespace ReplayProjectTest.Pages
         IWebElement inpUsuer => driver.FindElement(By.Id("login_user"));
         IWebElement inpPassword => driver.FindElement(By.Id("login_pass")); IWebElement selTheme => driver.FindElement(By.Id("login_theme"));
         IWebElement btnLoginButton => driver.FindElement(By.Id("login_button"));
-
-
 
         public void LoginAsAdminUser(string login, string password, string scheme)
         {

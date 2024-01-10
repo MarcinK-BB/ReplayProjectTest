@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium.Support.UI;
 using ReplayProjectTest.Setup;
 using SeleniumExtras.WaitHelpers;
-using System.Security.Cryptography;
 
 namespace ReplayProjectTest.Extensions
 {

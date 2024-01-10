@@ -1,17 +1,10 @@
 ﻿using ReplayProjectTest.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ReplayProjectTest.StepDefinitions
 {
     [Binding]
     public sealed class HomePageSteps
     {
         private readonly IHomePage _homePage;
-
 
         public HomePageSteps(IHomePage homePage)
         {
@@ -29,9 +22,5 @@ namespace ReplayProjectTest.StepDefinitions
         {
             _homePage.openShortCuts(name);
         }
-
-
-
-
     }
 }

@@ -19,7 +19,5 @@ namespace ReplayProjectTest.StepDefinitions
             dynamic data = table.CreateDynamicInstance();
             loginPage.LoginAsAdminUser(data.UserName,data.Password, data.Theme);
         }
-
-
     }
 }

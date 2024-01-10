@@ -2,7 +2,6 @@
 
 namespace ReplayProjectTest
 {
-   
     public static class Startup
     {
         [ScenarioDependencies]

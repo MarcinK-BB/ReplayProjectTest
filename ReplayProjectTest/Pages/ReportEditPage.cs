@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 
 namespace ReplayProjectTest.Pages
 {
+    public interface IReportEditPage
+    {
+        void RunReport();
+        void CheckResults();
+    }
     public class ReportEditPage: IReportEditPage
     {
         private IWebDriver driver;
@@ -27,8 +27,10 @@ namespace ReplayProjectTest.Pages
         public void RunReport()
         { 
             _waits.WaitForElementClick(btnRun);
-            if(!_waits.IsElementPresent(By.XPath("//span[contains(@id,'SelectCountHead')]")))
-               _waits.WaitForElementClick(btnRun);
+
+            //Work aroud if page are not proper load yet
+            // if(!_waits.IsElementPresent(By.XPath("//span[contains(@id,'SelectCountHead')]")))
+            //    _waits.WaitForElementClick(btnRun);
         }
 
         public void CheckResults()
@@ -36,11 +38,5 @@ namespace ReplayProjectTest.Pages
             _waits.WaitForElement(By.XPath("//span[contains(@id,'SelectCountHead')]"));
             Assert.True(ProjectNameLinks.Count > 0);
         }
-    }
-
-    public interface IReportEditPage
-    {
-        void RunReport();
-        void CheckResults();
     }
 }

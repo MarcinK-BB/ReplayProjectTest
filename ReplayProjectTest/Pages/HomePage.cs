@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium.Interactions;
 
 namespace ReplayProjectTest.Pages
 {
-
     public interface IHomePage
     {
         void openMenu(string mainMenu, string subMenu);
@@ -32,10 +25,6 @@ namespace ReplayProjectTest.Pages
         IWebElement subMenuItem(string subMenu) => driver.FindElement(By.XPath("//div[contains(@id,'menu-source')]//div[@class='option-cell input-label ' and contains(.,'" + subMenu + "')]"));
         IWebElement shortCuts(string name) => driver.FindElement(By.XPath(
             "//div[@id='page-shortcuts']//div[@class='option-cell input-label ' and contains(.,'"+ name + "')]"));
-
-        
-
-
 
         public void openMenu(string mainMenu, string subMenu)
         {

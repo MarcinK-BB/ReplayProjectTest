@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReplayProjectTest.Drivers;
+using ReplayProjectTest.Setup;
 
 namespace ReplayProjectTest.Extensions
 {
     public static class TableExtension
     {
-        public static List<RowData> CreateTableRowWithWebElements(IWebElement table, int rowLimit)
+        //method creating list of rows with web elements
+        //int rowLimit - indicate numbers of row
+        //params string[] colWebElement - indicates which html tag should be taken in particular column
+        public static List<RowData> CreateTableRowWithWebElements(IWebElement table, int rowLimit, params string[] colWebElement)
         {
             rowLimit++;
             List<RowData> tableData = new List<RowData>();
@@ -41,7 +41,7 @@ namespace ReplayProjectTest.Extensions
                             rowData.tdDataColection.Add(new TdData
                             {
                                 ColumnIndex = colIndex,
-                                Element = GetWebElementFromTable(colValue, colIndex)
+                                Element = GetWebElementFromTable(colValue, colWebElement[colIndex])
                             });
 
                             colIndex++;
@@ -59,20 +59,15 @@ namespace ReplayProjectTest.Extensions
             return tableData;
         }
 
-        private static IWebElement GetWebElementFromTable(IWebElement element, int colIndex=0)
+        private static IWebElement GetWebElementFromTable(IWebElement element, string webElement)
         {
-            //supports only html tag a, button, input
-            //In case of mor flexibility needs to be extended
-
-            IWebElement elementToReturn = null;
-            if (colIndex==0) // looking for  input in the first  colomn 
-                elementToReturn = element.FindElement(By.TagName("input"));
-            if (colIndex == 1) // looking for  a in the second  colomn
-                elementToReturn = element.FindElement(By.TagName("a"));
-            if (colIndex == 2) // looking for  a in the third  colomn
-                elementToReturn = element.FindElement(By.TagName("button"));
-
-            return elementToReturn;
+            return webElement switch
+            {
+                "input" => element.FindElement(By.TagName("input")),
+                "a" => element.FindElement(By.TagName("a")),
+                "button" => element.FindElement(By.TagName("button")),
+                _ => null
+            };
 
         }
     }
@@ -85,7 +80,7 @@ namespace ReplayProjectTest.Extensions
     public class TdData
     {
         public int ColumnIndex { get; set; }
-        public IWebElement Element { get; set; }
+        public IWebElement? Element { get; set; }
 
     }
 

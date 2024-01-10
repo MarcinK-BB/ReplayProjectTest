@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace ReplayProjectTest.Pages
+﻿namespace ReplayProjectTest.Pages
 {
-
     public interface IContactListPage
     {
         void CreateContact();
@@ -48,6 +40,5 @@ namespace ReplayProjectTest.Pages
              _waits.WaitForElementClick(lmkName(Name)); 
 
         }
-
     }
 }

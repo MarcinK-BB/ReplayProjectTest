@@ -31,12 +31,7 @@ namespace ReplayProjectTest.Drivers
         public IWebDriver GetFirefoxDriver()
         {
             new DriverManager().SetUpDriver(new FirefoxConfig());
-            FirefoxProfile ffProfile = new FirefoxProfile();
-            ffProfile.SetPreference("permissions.default.desktop-notification", 1);
-            FirefoxOptions ffOpts = new FirefoxOptions();
-            ffOpts.SetPreference("media.navigator.permission.disabled", true);
-            ffOpts.Profile = ffProfile;
-            return new FirefoxDriver(ffOpts);
+            return new FirefoxDriver();
         }
 
     }

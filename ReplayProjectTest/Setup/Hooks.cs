@@ -1,7 +1,4 @@
-﻿
-using ReplayProjectTest.Drivers;
-
-namespace ReplayProjectTest.Setup
+﻿namespace ReplayProjectTest.Setup
 {
     [Binding]
     public sealed class Hooks

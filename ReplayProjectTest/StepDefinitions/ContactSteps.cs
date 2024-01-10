@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using ReplayProjectTest.Models;
 using ReplayProjectTest.Pages;
-using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
 namespace ReplayProjectTest.StepDefinitions
@@ -49,8 +43,6 @@ namespace ReplayProjectTest.StepDefinitions
 
         }
 
-
-
         [Then(@"EditPage tittle should have correct text")]
         public void ThenEditPageTittleShouldHaveCorrectText()
         {
@@ -65,6 +57,9 @@ namespace ReplayProjectTest.StepDefinitions
             var adddContact = _scenarioContext.Get<Contact>("Contact");
             var actualContactEditPage = _contactEditPage.GetContactDetails();
             actualContactEditPage.Should().BeEquivalentTo(adddContact);
+
+            //Cleaning after test - optional only  - Can be done somehow e.g in Feature  Background: 
+            _contactEditPage.PerformDeleteAction("Delete");
         }
 
     }

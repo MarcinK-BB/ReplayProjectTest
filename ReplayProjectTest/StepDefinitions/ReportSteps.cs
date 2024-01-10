@@ -1,9 +1,4 @@
 ﻿using ReplayProjectTest.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReplayProjectTest.StepDefinitions
 {
@@ -36,9 +31,5 @@ namespace ReplayProjectTest.StepDefinitions
             _reportEditPage.RunReport();
             _reportEditPage.CheckResults();
         }
-
-   
-
-
     }
 }

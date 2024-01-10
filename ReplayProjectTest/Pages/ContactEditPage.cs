@@ -1,8 +1,12 @@
-﻿using System;
-using System.Net.Http.Headers;
-using OpenQA.Selenium.DevTools.V118.DOM;
-using ReplayProjectTest.Models;
+﻿using ReplayProjectTest.Models;
 using Xunit;
+
+public interface IContactEditPage
+{
+    void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText);
+    Contact GetContactDetails();
+    void PerformDeleteAction(string ActionName);
+}
 
 public class ContactEditPage: IContactEditPage
 {
@@ -26,9 +30,9 @@ public class ContactEditPage: IContactEditPage
          driver.FindElement(
              By.XPath("//p[@class='form-label' and contains(.,'Business Role')]/following-sibling::div"));
 
+     IWebElement btnDelete => driver.FindElement(By.Id("DetailForm_delete"));
 
-
-     public void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText)
+    public void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText)
      {
         _waits.WaitForElement(pageTitle);
         var title = pageTitle.Text;
@@ -54,10 +58,12 @@ public class ContactEditPage: IContactEditPage
          };
 
      }
+
+     public void PerformDeleteAction(string ActionName)
+     {
+         _waits.WaitForElementClick(btnDelete);
+         var alert = driver.SwitchTo().Alert();
+         alert.Accept();
+     }
 }
 
-public interface IContactEditPage
-{
-    void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText);
-    Contact GetContactDetails();
-}

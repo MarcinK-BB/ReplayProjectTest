@@ -15,13 +15,19 @@ namespace ReplayProjectTest.Drivers
             this.testSettings = testSettings;
             this.browserDriver = browserDriver;
             driver = GetWebDriver();
-            //driver.Navigate().GoToUrl(testSettings.ApplicationUrl);
         }
 
         public IWebDriver Driver => driver;
         public void NawigateToAppUrl() => driver.Navigate().GoToUrl(testSettings.ApplicationUrl);
 
-        public void Dispose() =>driver.Quit();
+        public void SetUpDriver()
+        {
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Convert.ToInt32(testSettings.ImplicitlyWait));
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(Convert.ToInt32(testSettings.PageLoadTimeout));
+        }
+
+        public void CleanUpDriver() => driver.Quit();
 
         private IWebDriver GetWebDriver()
         {

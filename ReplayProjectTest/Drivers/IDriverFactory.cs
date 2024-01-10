@@ -4,7 +4,7 @@
     {
         IWebDriver Driver { get; }
         void NawigateToAppUrl();
-
-        void Dispose();
+        void SetUpDriver();
+        void CleanUpDriver();
     }
 }

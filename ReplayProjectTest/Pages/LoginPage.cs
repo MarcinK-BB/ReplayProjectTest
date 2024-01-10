@@ -8,7 +8,7 @@ namespace ReplayProjectTest.Pages
 {
     public interface ILoginPage
     {
-        void LoginAsAdminUser();
+        void LoginAsAdminUser(string login, string password, string scheme);
     }
 
     public class LoginPage : ILoginPage
@@ -23,20 +23,18 @@ namespace ReplayProjectTest.Pages
         }
 
         IWebElement inpUsuer => driver.FindElement(By.Id("login_user"));
-        IWebElement inpPassword => driver.FindElement(By.Id("login_pass"));
+        IWebElement inpPassword => driver.FindElement(By.Id("login_pass")); IWebElement selTheme => driver.FindElement(By.Id("login_theme"));
         IWebElement btnLoginButton => driver.FindElement(By.Id("login_button"));
 
-        public void LoginAsAdminUser()
+
+
+        public void LoginAsAdminUser(string login, string password, string scheme)
         {
-            inpUsuer.SendKeys("admin");
-            inpPassword.SendKeys("admin");
+            inpUsuer.SendKeys(login);
+            inpPassword.SendKeys(password);
+            selTheme.SelectByText(scheme);
             btnLoginButton.Click();
-
         }
-
-
-
-
 
     }
 }

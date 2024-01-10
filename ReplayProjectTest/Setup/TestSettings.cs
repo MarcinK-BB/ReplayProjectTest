@@ -6,6 +6,8 @@ namespace ReplayProjectTest.Setup
     {
         public BrowserType BrowserType { get; set; }
         public Uri ApplicationUrl { get; set; }
-        public int TimeoutInterval { get; set; }
+        public bool UseHeadless { get; set; }
+        public int  ImplicitlyWait { get; set; }
+        public int PageLoadTimeout { get; set; }
     }
 }

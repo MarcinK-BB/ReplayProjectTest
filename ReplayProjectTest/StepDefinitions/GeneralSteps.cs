@@ -1,4 +1,5 @@
 using ReplayProjectTest.Pages;
+using TechTalk.SpecFlow.Assist;
 
 namespace ReplayProjectTest.StepDefinitions
 {
@@ -11,12 +12,14 @@ namespace ReplayProjectTest.StepDefinitions
         {
             this.loginPage = loginPage;
         }
-        [Given(@"I login to a home page as a admin")]
-        public void GivenILoginToAHomePageAsAAdmin()
+        
+        [Given(@"I login to a home page as a:")]
+        public void GivenILoginToAHomePageAsA(Table table)
         {
-            loginPage.LoginAsAdminUser();
-
+            dynamic data = table.CreateDynamicInstance();
+            loginPage.LoginAsAdminUser(data.UserName,data.Password, data.Theme);
         }
+
 
     }
 }

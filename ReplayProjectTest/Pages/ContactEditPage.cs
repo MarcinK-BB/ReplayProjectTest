@@ -1,0 +1,63 @@
+﻿using System;
+using System.Net.Http.Headers;
+using OpenQA.Selenium.DevTools.V118.DOM;
+using ReplayProjectTest.Models;
+using Xunit;
+
+public class ContactEditPage: IContactEditPage
+{
+    IWebDriver driver;
+    private readonly IDriverFactory _driverFactory;
+    private readonly IWaits _waits;
+
+    public  ContactEditPage(IDriverFactory driverFactory, IWaits waits)
+        {
+            _driverFactory = driverFactory;
+            _waits = waits;
+            driver = driverFactory.Driver;
+        }
+
+
+     IWebElement pageTitle => driver.FindElement(By.Id("main-title-text"));
+     IWebElement header => driver.FindElement(By.Id("_form_header"));
+     IWebElement Categories =>
+         driver.FindElement(By.XPath("//li[contains(.,'Category')]"));
+     IWebElement BuisnessRole =>
+         driver.FindElement(
+             By.XPath("//p[@class='form-label' and contains(.,'Business Role')]/following-sibling::div"));
+
+
+
+     public void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText)
+     {
+        _waits.WaitForElement(pageTitle);
+        var title = pageTitle.Text;
+        Assert.Equal( pageTitleText, title);
+
+     }
+
+     public Contact GetContactDetails()
+     {
+         _waits.WaitForElement(pageTitle);
+         var firstName = header.Text.Split(" ")[0];
+         var lastName = header.Text.Split(" ")[1];
+         var categories = Categories.Text.Remove(0,10)
+                                .Replace(" ","");
+         var buisnessRole = BuisnessRole.Text;
+
+         return new Contact()
+         {
+             FirstName = firstName,
+             LastName = lastName,
+             Categories = categories,
+             Role = buisnessRole
+         };
+
+     }
+}
+
+public interface IContactEditPage
+{
+    void EditPageTitleWithCorectTextShouldBeVisible(string pageTitleText);
+    Contact GetContactDetails();
+}

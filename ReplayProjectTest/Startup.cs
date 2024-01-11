@@ -13,6 +13,7 @@ namespace ReplayProjectTest
             services.UseWebDriverInitializer();
             services.AddScoped<IDriverFactory, DriverFactory>();
             services.AddScoped<IBrowserDriver, BrowserDriver>();
+            services.AddScoped<IApiLogin, ApiLogin>();
 
 
             //Waits initialization

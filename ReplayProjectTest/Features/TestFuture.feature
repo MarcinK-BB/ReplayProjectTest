@@ -1,5 +1,6 @@
 ﻿Feature: TestFuture
 
+@LoginUsingCredential
 Scenario: Create contact
 	Given I login to a home page as a:
 	| UserName | Password | Theme       |
@@ -12,14 +13,17 @@ Scenario: Create contact
 	Then I search for contactName: TestFirstName and open it
     Then Then Contact EditPage should have proper values
 
+@LoginUsingAPI
 Scenario: Run Report
-	Given I login to a home page as a:
-	| UserName | Password | Theme       |
-	| admin    | admin    | Claro Theme |
+#	Given I login to a home page as a:
+#	| UserName | Password | Theme       |
+#	| admin    | admin    | Claro Theme |
 	When I Navigate to Reports & Settings -> Reports
 	And I open Project Profitability report
 	Then When I run report it should have some results
 
+
+@LoginUsingCredential
 Scenario: Remove events from activity log:
     Given I login to a home page as a:
 	| UserName | Password | Theme       |

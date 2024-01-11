@@ -83,12 +83,14 @@ namespace ReplayProjectTest.Features
         [Xunit.SkippableFactAttribute(DisplayName="Create contact")]
         [Xunit.TraitAttribute("FeatureTitle", "TestFuture")]
         [Xunit.TraitAttribute("Description", "Create contact")]
+        [Xunit.TraitAttribute("Category", "LoginUsingCredential")]
         public virtual void CreateContact()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "LoginUsingCredential"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create contact", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 3
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -116,10 +118,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "admin",
                             "admin",
                             "Claro Theme"});
-#line 4
+#line 5
  testRunner.Given("I login to a home page as a:", ((string)(null)), table1, "Given ");
 #line hidden
-#line 7
+#line 8
  testRunner.When("I Navigate to Sales & Marketing -> Contacts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -132,16 +134,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "TestLastName",
                             "CEO",
                             "Customers,Suppliers"});
-#line 8
+#line 9
  testRunner.And("I Create contact with Values", ((string)(null)), table2, "And ");
 #line hidden
-#line 11
+#line 12
  testRunner.When("I Open Contacts from shortcuts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 13
  testRunner.Then("I search for contactName: TestFirstName and open it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 13
+#line 14
     testRunner.Then("Then Contact EditPage should have proper values", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -151,12 +153,57 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.SkippableFactAttribute(DisplayName="Run Report")]
         [Xunit.TraitAttribute("FeatureTitle", "TestFuture")]
         [Xunit.TraitAttribute("Description", "Run Report")]
+        [Xunit.TraitAttribute("Category", "LoginUsingAPI")]
         public virtual void RunReport()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "LoginUsingAPI"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Run Report", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 15
+#line 17
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 21
+ testRunner.When("I Navigate to Reports & Settings -> Reports", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 22
+ testRunner.And("I open Project Profitability report", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+ testRunner.Then("When I run report it should have some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Remove events from activity log:")]
+        [Xunit.TraitAttribute("FeatureTitle", "TestFuture")]
+        [Xunit.TraitAttribute("Description", "Remove events from activity log:")]
+        [Xunit.TraitAttribute("Category", "LoginUsingCredential")]
+        public virtual void RemoveEventsFromActivityLog()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "LoginUsingCredential"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove events from activity log:", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 27
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -184,68 +231,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "admin",
                             "admin",
                             "Claro Theme"});
-#line 16
- testRunner.Given("I login to a home page as a:", ((string)(null)), table3, "Given ");
+#line 28
+    testRunner.Given("I login to a home page as a:", ((string)(null)), table3, "Given ");
 #line hidden
-#line 19
- testRunner.When("I Navigate to Reports & Settings -> Reports", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 20
- testRunner.And("I open Project Profitability report", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 21
- testRunner.Then("When I run report it should have some results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Remove events from activity log:")]
-        [Xunit.TraitAttribute("FeatureTitle", "TestFuture")]
-        [Xunit.TraitAttribute("Description", "Remove events from activity log:")]
-        public virtual void RemoveEventsFromActivityLog()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove events from activity log:", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 23
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "UserName",
-                            "Password",
-                            "Theme"});
-                table4.AddRow(new string[] {
-                            "admin",
-                            "admin",
-                            "Claro Theme"});
-#line 24
-    testRunner.Given("I login to a home page as a:", ((string)(null)), table4, "Given ");
-#line hidden
-#line 27
+#line 31
  testRunner.When("I Navigate to Reports & Settings -> Activity Log", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 32
  testRunner.And("I remove first 3 elements from the results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 33
  testRunner.Then("Numbers of elements on the list should be less then 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

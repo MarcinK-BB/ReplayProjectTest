@@ -8,11 +8,13 @@
     public class LoginPage : ILoginPage
     {
         private readonly IDriverFactory driverFactory;
+        private readonly FeatureContext _featureContext;
         private readonly IWebDriver driver;
 
-        public LoginPage(IDriverFactory driverFactory)
+        public LoginPage(IDriverFactory driverFactory, FeatureContext featureContext)
         {
             this.driverFactory = driverFactory;
+            _featureContext = featureContext;
             this.driver = driverFactory.Driver;
         }
 

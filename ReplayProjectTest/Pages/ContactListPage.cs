@@ -28,16 +28,19 @@
 
          public void CreateContact()
          {
+             _waits.WaitForLoaderDisappear();
              _waits.WaitForElement(btnAction);
              btnCreate.Click();
          }
 
          public void searchAndClicEnter(string Name)
          {
-             _waits.WaitForElement(inpSearch);
+            _waits.WaitForLoaderDisappear();
+            _waits.WaitForElement(inpSearch);
              inpSearch.SendKeys(Name);
              inpSearch.SendKeys(Keys.Enter);
-             _waits.WaitForElementClick(lmkName(Name)); 
+            _waits.WaitForLoaderDisappear();
+            _waits.WaitForElementClick(lmkName(Name)); 
 
         }
     }

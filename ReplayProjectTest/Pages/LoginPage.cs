@@ -8,13 +8,13 @@
     public class LoginPage : ILoginPage
     {
         private readonly IDriverFactory driverFactory;
-        private readonly FeatureContext _featureContext;
+        private readonly IWaits  _waits;
         private readonly IWebDriver driver;
 
-        public LoginPage(IDriverFactory driverFactory, FeatureContext featureContext)
+        public LoginPage(IDriverFactory driverFactory, IWaits waits)
         {
             this.driverFactory = driverFactory;
-            _featureContext = featureContext;
+            _waits = waits;
             this.driver = driverFactory.Driver;
         }
 
@@ -24,6 +24,7 @@
 
         public void LoginAsAdminUser(string login, string password, string scheme)
         {
+            _waits.WaitForElement(inpUsuer);
             inpUsuer.SendKeys(login);
             inpPassword.SendKeys(password);
             selTheme.SelectByText(scheme);

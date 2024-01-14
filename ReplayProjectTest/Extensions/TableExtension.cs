@@ -66,7 +66,7 @@ namespace ReplayProjectTest.Extensions
                 "input" => element.FindElement(By.TagName("input")),
                 "a" => element.FindElement(By.TagName("a")),
                 "button" => element.FindElement(By.TagName("button")),
-                _ => null
+                _ => throw new NoSuchElementException()
             };
 
         }

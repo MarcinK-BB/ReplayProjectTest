@@ -24,13 +24,13 @@
 
         public void searchAndClicEnter(string Name)
         {
-
+            _waits.WaitForLoaderDisappear();
             _waits.WaitForElement(inpSearch);
-            Thread.Sleep(1000); // I have problem with that therefore I used wait:)
             inpSearch.SendKeys(Name);
             inpSearch.SendKeys(Keys.Enter);
-            _waits.WaitForElementClick(lmkName(Name));
             _waits.WaitForLoaderDisappear();
+            _waits.WaitForElementClick(lmkName(Name));
+            
         }
     }
 }

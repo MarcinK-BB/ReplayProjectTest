@@ -26,6 +26,7 @@ namespace ReplayProjectTest.Pages
 
         public void RunReport()
         { 
+            _waits.WaitForLoaderDisappear();
             _waits.WaitForElementClick(btnRun);
 
             //Work aroud if page are not proper load yet

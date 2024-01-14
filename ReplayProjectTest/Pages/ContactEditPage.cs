@@ -42,7 +42,8 @@ public class ContactEditPage: IContactEditPage
 
      public Contact GetContactDetails()
      {
-         _waits.WaitForElement(pageTitle);
+        _waits.WaitForLoaderDisappear();
+        _waits.WaitForElement(pageTitle);
          var firstName = header.Text.Split(" ")[0];
          var lastName = header.Text.Split(" ")[1];
          var categories = Categories.Text.Remove(0,10)

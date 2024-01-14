@@ -34,6 +34,8 @@ namespace ReplayProjectTest.Pages
 
         public void FillContact(Contact contact)
         {
+            _waits.WaitForLoaderDisappear();
+            _waits.WaitForElement(inpFirstName);
             inpFirstName.SendKeys(contact.FirstName);
             inpLasttName.SendKeys(contact.LastName);
             FillCategories(contact.Categories);

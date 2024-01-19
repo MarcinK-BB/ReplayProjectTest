@@ -6,10 +6,6 @@
     }
     public class ReportListPage: BasePage,IReportListPage
     {
-        IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
-        private readonly IWaits _waits;
-
         public ReportListPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
             : base(driverFactory, waits, scenarioContex) { }
         IWebElement lmkName(string Name) => driver.FindElement(By.XPath("//a[@class='listViewNameLink' and contains(.,'" + Name + "')]"));

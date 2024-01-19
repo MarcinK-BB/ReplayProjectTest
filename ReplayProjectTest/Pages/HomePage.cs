@@ -29,10 +29,15 @@ namespace ReplayProjectTest.Pages
             _waits.WaitForLoaderDisappear();
             _waits.WaitForElement(mainMenuItem(mainMenu));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(mainMenuItem(mainMenu)).
-                   Build().Perform();
+
            if(_settings.BrowserType == BrowserType.Firefox)
-            mainMenuItem(mainMenu).Click();
+                builder.MoveToElement(mainMenuItem(mainMenu)).
+                    Click().Build().Perform();
+           else
+               builder.MoveToElement(mainMenuItem(mainMenu)).
+                   Build().Perform();
+
+           _waits.WaitForLoaderDisappear();
             _waits.WaitForElement(subMenuItem(subMenu));
             subMenuItem(subMenu).Click();
         }

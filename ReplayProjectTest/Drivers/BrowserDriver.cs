@@ -30,8 +30,16 @@ namespace ReplayProjectTest.Drivers
 
         public IWebDriver GetFirefoxDriver()
         {
+            var option = new FirefoxOptions();
             new DriverManager().SetUpDriver(new FirefoxConfig());
-            return new FirefoxDriver();
+            if (_testSettings.UseHeadless)
+            {
+
+                option.AddArgument("--headless");
+                option.AddArgument("window-size=1920,1080");
+
+            }
+            return new FirefoxDriver(option);
         }
 
     }

@@ -6,24 +6,16 @@
         void searchAndClicEnter(string contactName);
     }
 
-    public class ContactListPage: IContactListPage
+    public class ContactListPage:BasePage, IContactListPage
     {
-        private IWebDriver _driver;
-        private readonly IDriverFactory _driverFactory;
-        private readonly IWaits _waits;
+        public ContactListPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
+            : base(driverFactory, waits, scenarioContex) { }
 
-        public ContactListPage(IDriverFactory driverFactory, IWaits waits)
-        {
-            _driverFactory = driverFactory;
-            _waits = waits;
-            _driver = _driverFactory.Driver;
-        }
-
-         IWebElement btnCreate => _driver.FindElement(By.XPath("//button[@class='input-button first' and @name='SubPanel_create']"));
-         IWebElement btnAction => _driver.FindElement(By.XPath("//button[contains(@id,'ActionButtonHead')]"));
-         IWebElement lmkName(string Name) => _driver.FindElement(By.XPath("//a[@class='listViewNameLink' and contains(.,'"+ Name + "')]"));
-         IWebElement inpSearch => _driver.FindElement(By.Id("filter_text"));
-         IWebElement title => _driver.FindElement(By.Id("main-title-module"));
+        IWebElement btnCreate => driver.FindElement(By.XPath("//button[@class='input-button first' and @name='SubPanel_create']"));
+         IWebElement btnAction => driver.FindElement(By.XPath("//button[contains(@id,'ActionButtonHead')]"));
+         IWebElement lmkName(string Name) => driver.FindElement(By.XPath("//a[@class='listViewNameLink' and contains(.,'"+ Name + "')]"));
+         IWebElement inpSearch => driver.FindElement(By.Id("filter_text"));
+         IWebElement title => driver.FindElement(By.Id("main-title-module"));
 
 
          public void CreateContact()

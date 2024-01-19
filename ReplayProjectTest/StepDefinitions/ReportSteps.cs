@@ -5,18 +5,15 @@ namespace ReplayProjectTest.StepDefinitions
     [Binding]
     public sealed class ReportSteps
     {
-        IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
         private readonly IReportListPage _reportListPage;
         private readonly IReportEditPage _reportEditPage;
 
 
         public ReportSteps(IDriverFactory driverFactory, IReportListPage reportListPage, IReportEditPage reportEditPage)
         {
-            _driverFactory = driverFactory;
+
             _reportListPage = reportListPage;
             _reportEditPage = reportEditPage;
-            driver = _driverFactory.Driver;
         }
 
         [When(@"I open (.*) report")]

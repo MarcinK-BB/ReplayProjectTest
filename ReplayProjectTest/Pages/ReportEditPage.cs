@@ -7,18 +7,12 @@ namespace ReplayProjectTest.Pages
         void RunReport();
         void CheckResults();
     }
-    public class ReportEditPage: IReportEditPage
+    public class ReportEditPage:BasePage, IReportEditPage
     {
-        private IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
-        private readonly IWaits _waits;
 
-        public ReportEditPage(IDriverFactory driverFactory, IWaits waits)
-        {
-            _driverFactory = driverFactory;
-            _waits = waits;
-            driver = _driverFactory.Driver;
-        }
+
+        public ReportEditPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
+            : base(driverFactory, waits, scenarioContex) { }
 
         IWebElement FormTitle => driver.FindElement(By.XPath("//h4[@class='form-title search-title']"));
         IWebElement btnRun => driver.FindElement(By.XPath("//button[contains(@id,'FilterForm_applyButton')]"));

@@ -8,8 +8,6 @@ namespace ReplayProjectTest.StepDefinitions
     [Binding]
     public sealed class ContactSteps
     {
-        IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
         private readonly IContactCreatePage _contactCreatePage;
         private readonly IContactListPage _contactListPage;
         private readonly ScenarioContext _scenarioContext;
@@ -18,8 +16,6 @@ namespace ReplayProjectTest.StepDefinitions
         public ContactSteps(IDriverFactory driverFactory, IContactCreatePage contactCreatePage,
             IContactListPage contactListPage, ScenarioContext scenarioContext, IContactEditPage contactEditPage)
         {
-            _driverFactory = driverFactory;
-            driver = _driverFactory.Driver;
             _contactCreatePage = contactCreatePage;
             _contactListPage = contactListPage;
             _scenarioContext = scenarioContext;

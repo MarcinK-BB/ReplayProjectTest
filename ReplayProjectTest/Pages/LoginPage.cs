@@ -5,18 +5,12 @@
         void LoginAsAdminUser(string login, string password, string scheme);
     }
 
-    public class LoginPage : ILoginPage
+    public class LoginPage : BasePage, ILoginPage
     {
-        private readonly IDriverFactory driverFactory;
-        private readonly IWaits  _waits;
-        private readonly IWebDriver driver;
 
-        public LoginPage(IDriverFactory driverFactory, IWaits waits)
-        {
-            this.driverFactory = driverFactory;
-            _waits = waits;
-            this.driver = driverFactory.Driver;
-        }
+
+        public LoginPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
+            : base(driverFactory, waits, scenarioContex) { }
 
         IWebElement inpUsuer => driver.FindElement(By.Id("login_user"));
         IWebElement inpPassword => driver.FindElement(By.Id("login_pass")); IWebElement selTheme => driver.FindElement(By.Id("login_theme"));

@@ -7,19 +7,11 @@ namespace ReplayProjectTest.Pages
         void SelectElementOnTheList(int rowNumbers);
         void RemoveSelectedElementFromTheListAndAssert(int removedElements);
     }
-    public class ActivityLogPage: IActivityLogPage
-    {
-        private IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
-        private readonly IWaits _waits;
-        private readonly ScenarioContext _scenarioContex;
 
+    public class ActivityLogPage : BasePage, IActivityLogPage
+    {
         public ActivityLogPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
-        {
-            _driverFactory = driverFactory;
-            _waits = waits;
-            _scenarioContex = scenarioContex;
-            driver = _driverFactory.Driver;
+            : base(driverFactory, waits, scenarioContex){
         }
 
         IWebElement btnAction => driver.FindElement(By.XPath("//button[contains(@id,'ActionButtonHead')]"));

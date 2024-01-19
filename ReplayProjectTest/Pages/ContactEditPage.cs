@@ -1,4 +1,4 @@
-﻿using ReplayProjectTest.Models;
+﻿using ReplayProjectTest.Models;using ReplayProjectTest.Pages;
 using Xunit;
 
 public interface IContactEditPage
@@ -8,21 +8,15 @@ public interface IContactEditPage
     void PerformDeleteAction(string ActionName);
 }
 
-public class ContactEditPage: IContactEditPage
+public class ContactEditPage:BasePage, IContactEditPage
 {
-    IWebDriver driver;
-    private readonly IDriverFactory _driverFactory;
-    private readonly IWaits _waits;
-
-    public  ContactEditPage(IDriverFactory driverFactory, IWaits waits)
-        {
-            _driverFactory = driverFactory;
-            _waits = waits;
-            driver = driverFactory.Driver;
-        }
 
 
-     IWebElement pageTitle => driver.FindElement(By.Id("main-title-text"));
+    public  ContactEditPage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
+        : base(driverFactory, waits, scenarioContex) { }
+
+
+    IWebElement pageTitle => driver.FindElement(By.Id("main-title-text"));
      IWebElement header => driver.FindElement(By.Id("_form_header"));
      IWebElement Categories =>
          driver.FindElement(By.XPath("//li[contains(.,'Category')]"));

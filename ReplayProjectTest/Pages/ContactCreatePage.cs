@@ -8,19 +8,12 @@ namespace ReplayProjectTest.Pages
         void FillContact(Contact contact);
 
     }
-    public class ContactCreatePage: IContactCreatePage
+    public class ContactCreatePage: BasePage, IContactCreatePage
     {
-        IWebDriver driver;
-        private readonly IDriverFactory _driverFactory;
-        private readonly IWaits _waits;
-        private readonly IContactEditPage _contactEditPage;
 
-        public ContactCreatePage(IDriverFactory driverFactory, IWaits waits)
-        {
-            _driverFactory = driverFactory;
-            _waits = waits;
-            driver = _driverFactory.Driver;
-        }
+        public ContactCreatePage(IDriverFactory driverFactory, IWaits waits, ScenarioContext scenarioContex)
+            : base(driverFactory, waits, scenarioContex){}
+
 
         IWebElement inpFirstName => driver.FindElement(By.Id("DetailFormfirst_name-input"));
         IWebElement inpLasttName => driver.FindElement(By.Id("DetailFormlast_name-input"));

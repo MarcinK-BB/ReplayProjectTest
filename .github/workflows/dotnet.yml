@@ -1,30 +1,22 @@
-name: .NET
-
+name: .NET 6.0
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
-
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - uses: actions/cryptic-wizard/run-specflow-tests@v1.3.1
+    - uses:  ./
       with:
-        test-assembly-path: ReplayProjectTest/bin/Debug/net6.0
+        test-assembly-path: ReplayProjectTest/bin/Release/net6.0
         test-assembly-dll: ReplayProjectTest.dll
-        output-html: MyTestResults.html   
+        output-html: LivingDoc.html
+        framework: net6.0

@@ -82,6 +82,13 @@ runs:
 
         dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
         livingdoc test-assembly "$_dll" -t "$_test" -o "${{ inputs.output-html }}"
+
+        mkdir -p ./reports
+
+        cp "${_test/}${{ inputs.output-html }}" ./reports
+        echo "Reports has been copied"
+        ls -l ./reports
+        
       shell: bash
     - name: 'Publish Specflow Test Results'
       if: ${{ inputs.upload-artifact == 'true' }}

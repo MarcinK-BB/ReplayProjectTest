@@ -99,11 +99,6 @@ runs:
       with:
         name: 'Specflow Test Results'
         path: ${{ inputs.output-html }}
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports     
     - name: ReturnCode
       run: |
         exit "${_EXIT:-0}"

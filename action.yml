@@ -91,8 +91,7 @@ runs:
 
         cp "${{ inputs.output-html-folder }}${{ inputs.output-html }}" ./reports
         echo "Reports has been copied"
-        ls -l ./reports
-        
+
       shell: bash
     - name: 'Publish Specflow Test Results'
       if: ${{ inputs.upload-artifact == 'true' }}
@@ -104,3 +103,8 @@ runs:
       run: |
         exit "${_EXIT:-0}"
       shell: bash
+     name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports 

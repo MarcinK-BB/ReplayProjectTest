@@ -1,6 +1,8 @@
-name: .NET 6.0
+name: Pipeline To build and deploy test results
 on:
   push:
+  schedule:
+    - cron:  '0 0 * * * *'
 
 jobs:
   build:

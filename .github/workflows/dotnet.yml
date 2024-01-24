@@ -20,3 +20,8 @@ jobs:
         test-assembly-dll: ReplayProjectTest.dll
         output-html: LivingDoc.html
         framework: net6.0
+    - name: Deploy Github Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports      

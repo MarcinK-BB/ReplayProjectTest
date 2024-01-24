@@ -85,7 +85,7 @@ runs:
 
         mkdir -p ./reports
 
-        cp "${_test/}${{ inputs.output-html }}" ./reports
+        cp "${_path/}${{ inputs.output-html }}" ./reports
         echo "Reports has been copied"
         ls -l ./reports
         

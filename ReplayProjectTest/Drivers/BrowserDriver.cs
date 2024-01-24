@@ -3,6 +3,7 @@ using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager;
 using OpenQA.Selenium.Firefox;
 using ReplayProjectTest.Setup;
+using WebDriverManager.Helpers;
 
 namespace ReplayProjectTest.Drivers
 {
@@ -17,7 +18,7 @@ namespace ReplayProjectTest.Drivers
         public IWebDriver GetChromDriver()
         {
             var option = new ChromeOptions();
-            new DriverManager().SetUpDriver(new ChromeConfig(), version: "Latest");
+            new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
             if (_testSettings.UseHeadless)
             {
                 
